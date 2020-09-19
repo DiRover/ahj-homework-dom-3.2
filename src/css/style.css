@@ -1,0 +1,60 @@
+.container {
+    width: 30%;
+    margin: 30vh auto;
+}
+
+.todo {
+    display: flex;
+    flex-direction: column;
+}
+
+.error_msg {
+    display: none;
+    font-size: 2em;
+    color: red;
+}
+
+.active {
+    display: block;
+}
+.hidden {
+    display: none;
+}
+
+/*.all_tasks {
+    display: flex;
+}*/
+
+/*.containerTask {
+    display: flex;
+    flex-direction: row;
+}*/
+
+.task {
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    margin-top: 2%;
+    font-size: 1.5rem;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+p {
+    margin: 0;
+    align-self: center;
+}
+
+.circle {
+    width: 5vh;
+    height: 5vh;
+    border: 2px solid black;
+    border-radius: 50%;
+    align-self: center;
+    padding: 0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+}
