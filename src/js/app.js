@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable import/no-cycle */
 import filterByText from './filterByText';
 import pin from './pin';
 import unpin from './unpin';

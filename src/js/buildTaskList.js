@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 export default function buildTaskList(arr, containerTask) {
   containerTask.innerHTML = '';
   arr.forEach((data) => {

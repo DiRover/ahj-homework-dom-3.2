@@ -1,3 +1,4 @@
+/* eslint-disable no-shadow */
 function filterBy(tasks, containsText) {
   // console.log(tasks);
   // возвращаем отфильтрованный массив с задачами
