@@ -6,12 +6,27 @@
 .todo {
     display: flex;
     flex-direction: column;
+    border: black solid 2px;
 }
 
 .error_msg {
     display: none;
     font-size: 2em;
     color: red;
+}
+
+.enter_task {
+    width: 400px;
+}
+
+.form {
+    width: 200px;
+    margin: 0 auto;
+}
+
+#input {
+    border: 2px solid black;
+    width: 200px;
 }
 
 .active {
@@ -21,20 +36,15 @@
     display: none;
 }
 
-/*.all_tasks {
-    display: flex;
-}*/
-
-/*.containerTask {
-    display: flex;
-    flex-direction: row;
-}*/
-
+#container_task, .pinned_task {
+    width: 400px;
+}
 .task {
     display: flex;
     justify-content: space-between;
-    width: 50%;
-    margin-top: 2%;
+    width: 70%;
+    height: 30px;
+    margin: 2% auto 0 auto;
     font-size: 1.5rem;
     border: 2px solid black;
     border-radius: 10px;
@@ -46,15 +56,22 @@ p {
 }
 
 .circle {
-    width: 5vh;
-    height: 5vh;
+    width: 20px;
+    height: 20px;
     border: 2px solid black;
     border-radius: 50%;
     align-self: center;
     padding: 0;
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 10%;
     line-height: 150%;
     text-align: center;
+    
+}
+
+.pin {
+    background-image: url('../img/checkmark.png');
+    background-repeat: no-repeat;
+    background-position: center;
 }

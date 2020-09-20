@@ -1,58 +1,49 @@
+import filterByText from './filterByText';
+import pin from './pin';
+import unpin from './unpin';
+import buildTaskList from './buildTaskList';
+
 const text = document.querySelector('[data-text="task-text"]');
-let containerTask = document.querySelector('[data-task="data-task"]');
-const enterTask = document.querySelector('.enter_task');
+export const containerTask = document.querySelector('[data-task="data-task"]');
 const errorMsg = document.querySelector('.error_msg');
-const pinnedTasks = document.querySelector('.pinned_container');
-let tasksAll;
-let data;
+export const pinnedTasks = document.querySelector('.pinned_container');
+const form = document.querySelector('.form');
+// отдельный массив для задач, больше нужен при фильтрации
+export const arr = [];
 
-text.addEventListener('keypress', getInputData);
-/*text.addEventListener('input', filterTask);
+// вводим задачу
+// вся штука здесь, подписываемся на форму! у неё событие сабмит
+// после нажатия enter рисуется полный список из arr
+// при инуте рисуется отфильтрованный список
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  // если поле ввода пустое выкидываем ошибку
+  if (text.value === '') {
+    errorMsg.classList.add('active');
+  }
+  const task = text.value;
+  arr.push(task);
+  // скидываем значение в поле ввода
+  form.reset();
+  // рисуем список
+  buildTaskList(arr, containerTask);
+});
 
-function filterTask() {
-    console.log(arr)
-    tasksAll.forEach((item) => {
-        if (!item.textContent.startsWith(data)) {
-            item.classList.add('hidden');
-        }
-    })
-    tasksAll.forEach((item) => {
-        item.classList.remove('hidden')
-        
-    })
-}*/
+// фильтруем список задач
+text.addEventListener('input', () => {
+  // есди нет задач, не выполняем дальше код
+  if (!containerTask.hasChildNodes()) {
+    return null;
+  }
+  const textInput = text.value;
+  // фильтруем
+  const filteredList = filterByText(arr, textInput);
+  // рисуем отфильтрованный список
+  buildTaskList(filteredList, containerTask);
+});
 
-function getInputData() {
-    data = text.value;
-    const key = event.key;
-    if (key === 'Enter') {
-        event.preventDefault();
-        if (data.length !== 0) {
-            errorMsg.classList.remove('active');
-            containerTask.innerHTML += `<div class="task"><p>${data}</p><div class="circle"></div></div>`;
-            arr.push(data);
-            text.value = '';
-            tasksAll = document.querySelectorAll('.task');
-        } else {
-            errorMsg.classList.add('active');
-        }
-        event.preventDefault();
-    }
-}
-
+// закрепляем задачи
 containerTask.addEventListener('click', pin);
-function pin() {
-    const circle = document.querySelector('.circle');
-    const target = event.target;
-    if (target === circle) {
-        console.log('ok');
-        const parent = target.closest('.task');
-        const task = target.previousSibling;
-        const content = task.textContent;
-        console.log(task.textContent);
-        containerTask.removeChild(parent);
-        pinnedTasks.textContent = '';
-        pinnedTasks.innerHTML += `<div class="task"><p>${content}</p><div class="circle">V</div></div>`;
-        
-    }
-}
+
+// открепляем задачу
+pinnedTasks.addEventListener('click', unpin);

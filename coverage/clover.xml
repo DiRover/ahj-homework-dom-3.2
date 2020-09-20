@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1600595532732" clover="3.2.0">
+  <project timestamp="1600595532732" name="All files">
+    <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4" elements="9" coveredelements="9" complexity="0" loc="5" ncloc="5" packages="1" files="1" classes="1"/>
+    <file name="filterByText.js" path="E:\IT_and_programing\Frontend\9.0_Homeworks\Task_3.2_Events\src\js\filterByText.js">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="9" count="3" type="stmt"/>
+      <line num="11" count="3" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="3" type="stmt"/>
+    </file>
+  </project>
+</coverage>
