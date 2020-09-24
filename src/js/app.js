@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-globals */
+/* eslint-disable max-len */
 /* eslint-disable consistent-return */
 /* eslint-disable import/no-cycle */
 import filterByText from './filterByText';
@@ -22,6 +24,7 @@ form.addEventListener('submit', (e) => {
   // если поле ввода пустое выкидываем ошибку
   if (text.value === '') {
     errorMsg.classList.add('active');
+    return null; // останавлтваем дальнейшее выполнение кода, т.к. пустая задача может упасть в опщий список
   }
   const task = text.value;
   arr.push(task);
@@ -34,14 +37,24 @@ form.addEventListener('submit', (e) => {
 // фильтруем список задач
 text.addEventListener('input', () => {
   // есди нет задач, не выполняем дальше код
+  errorMsg.classList.remove('active');// вдруг было выведено сообщение об ошибке
   if (!containerTask.hasChildNodes()) {
     return null;
   }
-  const textInput = text.value;
+  let textInput = text.value;
   // фильтруем
-  const filteredList = filterByText(arr, textInput);
+  let filteredList = filterByText(arr, textInput);
   // рисуем отфильтрованный список
   buildTaskList(filteredList, containerTask);
+  text.addEventListener('keydown', () => { // рисуем задачи после удаления некоторых символов
+    textInput = text.value.slice(0, (text.value.length - 1)); // отризаем последний символ, т.к. перехватывает
+    // на первой итерации сразу всё значение, а символ должен быть удалён
+
+    if (event.key === 'Backspace') { // с Backspace не работает keypress
+      filteredList = filterByText(arr, textInput);
+      buildTaskList(filteredList, containerTask);
+    }
+  });
 });
 
 // закрепляем задачи
